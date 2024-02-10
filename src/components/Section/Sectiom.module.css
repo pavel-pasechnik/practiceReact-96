@@ -1,0 +1,16 @@
+.baseSection {
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  margin: 0 auto;
+  width: 1200px;
+}
+
+.title {
+  color: orangered;
+}
+
+.superSection {
+  composes: baseSection;
+  background: #c4c4c4;
+}

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
-// import css from "./User.module.css";
+
 import { Address } from "../Address/Address";
+import { Paragraph, Span, SuperParagraph } from "./User.styled";
 
 export const User = ({
   user: {
@@ -9,10 +10,15 @@ export const User = ({
     address: { street, city },
   },
 }) => {
+  const endsWithNet = email.endsWith("net");
   return (
     <>
-      <p> Name : {name}</p>
-      <p> Email: {email}</p>
+      <SuperParagraph>
+        Name : <Span>{name}</Span>
+      </SuperParagraph>
+      <Paragraph>
+        Email: <Span isRed={endsWithNet}>{email}</Span>
+      </Paragraph>
       <Address street={street} city={city} />
     </>
   );

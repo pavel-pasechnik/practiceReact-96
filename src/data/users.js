@@ -3,7 +3,7 @@ export const data = [
     id: "5b9289",
     name: "Leanne Graha",
     username: "Bret",
-    email: "Sincere@april.biz",
+    email: "Sincere@april.net",
     isOnline: "yes",
     address: {
       street: "Kulas Light",
