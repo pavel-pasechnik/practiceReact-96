@@ -1,4 +1,4 @@
-import css from "./Sectiom.module.css";
+import css from "./Section.module.css";
 
 export const Section = ({ children, title }) => {
   return (
