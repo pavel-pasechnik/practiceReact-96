@@ -52,6 +52,7 @@ export const data = [
     name: "Clementine Bauch",
     username: "Samantha",
     email: "Nathan@yesenia.net",
+    isOnline: "no",
     address: {
       street: "Douglas Extension",
       suite: "Suite 847",

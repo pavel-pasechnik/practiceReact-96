@@ -27,6 +27,18 @@ export default function App() {
     setUsers((prevUsers) => [...prevUsers, user]);
   };
 
+  const handelChangeStatus = (id) => {
+    setUsers((prevUsers) => {
+      return prevUsers.map((user) => {
+        if (user.id === id) {
+          const status = user.isOnline === "yes" ? "no" : "yes";
+          return { ...user, isOnline: status };
+        }
+        return user;
+      });
+    });
+  };
+
   useEffect(() => {
     window.localStorage.setItem("savedUsers", JSON.stringify(users));
   }, [users]);
@@ -40,7 +52,11 @@ export default function App() {
     <>
       <Form onSubmit={handleNewUser} />
       <Section title="List of users">
-        <UsersList users={users} onDelete={handleDelete} />
+        <UsersList
+          users={users}
+          onDelete={handleDelete}
+          onChange={handelChangeStatus}
+        />
       </Section>
     </>
   );
