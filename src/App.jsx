@@ -1,17 +1,33 @@
 import { data } from "./data/users.js";
 import { Section } from "./components/Section/Section.jsx";
-import { User } from "./components/User/User.jsx";
 import { UsersList } from "./components/UsersList/UsersList";
+import { useState, useEffect } from "react";
 import "./App.css";
 
 export default function App() {
+  const [users, setUsers] = useState(() => {
+    const savedUsers = window.localStorage.getItem("savedUsers");
+
+    if (savedUsers !== null) {
+      return JSON.parse(savedUsers);
+    }
+
+    return data;
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem("savedUsers", JSON.stringify(users));
+  }, [users]);
+
+  const handleDelete = (id) => {
+    setUsers((prevUsers) => {
+      return prevUsers.filter((user) => user.id !== id);
+    });
+  };
   return (
     <>
-      <Section>
-        <User user={data[0]} />
-      </Section>
       <Section title="List of users">
-        <UsersList users={data} />
+        <UsersList users={users} onDelete={handleDelete} />
       </Section>
     </>
   );
